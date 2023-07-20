@@ -22,12 +22,13 @@ bibliotecas utilizadas
 - 2. Al encontrarse en el directorio debemos escribir en el siguiente comando: git clone https://github.com/ByronGodoyTenesaca/pruebaTecnicaCatalogo.git
 - 3. Al presionar enter notaremos que se está descargando los archivos desde el repositorio, al tener finalizado navegamos hacia la carpeta donde se descargó el repositorio
 - 4. Al estar dentro de la carpeta lo primero que necesitamos es instalar las dependencias que necesita el proyecto para funcionar, ingresando el comando **npm install** nos descargara todas las dependencias necesarias de forma automática.
-- 5. Cuando tengamos todas las dependencias descargadas ingresamos el comando **npm run dev** para correr la aplicación 
+- 5. Cuando tengamos todas las dependencias descargadas ingresamos el comando **npm run dev** para correr la aplicación y ponemos en el url del navegador **http://localhost:3000**
 
 
 - Formas de Uso
 
-    La página principal mantiene un slader donde se tiene tres imágenes obtenidas de internet y las cuales va cambiando cada 2 segundos para ingresar, únicamente debemos dar click en el botón ir al catálogo en donde a continuación nos mostrara todos los productos
+Para ingresar a la página que se encuentra en producción debemos ingresar al siguiente link: **https://prueba-tecnica-catalogo.vercel.app/**
+      La página principal mantiene un slader donde se tiene tres imágenes obtenidas de internet y las cuales va cambiando cada 2 segundos para ingresar, únicamente debemos dar click en el botón ir al catálogo en donde a continuación nos mostrara todos los productos
 
     ![Alt text](image.png)
 
