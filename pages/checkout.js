@@ -114,7 +114,7 @@ export default function CheckOut() {
       </div>
 
 
-      <Link className="btn btn-outline-success" href="/" style={{ "margin-left": "47%", "background-color": "brown", "color": "white" }} onClick={() => {
+      <Link className="btn btn-outline-success" href="/" style={{ "margin-left": "47%", "background-color": "brown", "color": "white","text-decoration":"none" }} onClick={() => {
         localStorage.clear(); 
         Swal.fire({
           position: 'center',
