@@ -24,13 +24,14 @@ bibliotecas utilizadas
 - 4. Al estar dentro de la carpeta lo primero que necesitamos es instalar las dependencias que necesita el proyecto para funcionar, ingresando el comando **npm install** nos descargara todas las dependencias necesarias de forma automática.
 - 5. Cuando tengamos todas las dependencias descargadas ingresamos el comando **npm run dev** para correr la aplicación 
 
+
 - Formas de Uso
 
- La página principal mantiene un slader donde se tiene tres imágenes obtenidas de internet y las cuales va cambiando cada 2 segundos para ingresar, únicamente debemos dar click en el botón ir al catálogo en donde a continuación nos mostrara todos los productos
+    La página principal mantiene un slader donde se tiene tres imágenes obtenidas de internet y las cuales va cambiando cada 2 segundos para ingresar, únicamente debemos dar click en el botón ir al catálogo en donde a continuación nos mostrara todos los productos
 
     ![Alt text](image.png)
 
-    Al presionar el botón ir al catálogo nos enlistará los productos 
+    Al presionar el botón ir al catálogo nos enlistará los productos  
     ![Alt text](image-1.png)
 
     Como podemos observar contamos con un botón que nos indica añadir al carrito y si lo presionamos los datos serán añadidos para su posterior compra, de la misma forma al presionar el añadir carrito nos mostrara un modal donde nos indica que el producto fue añadido al carrito
