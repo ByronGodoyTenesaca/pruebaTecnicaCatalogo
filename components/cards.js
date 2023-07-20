@@ -39,13 +39,34 @@ export default function Cards(props) {
       showConfirmButton: false,
       timer: 1500
     })
+
+    if(carrito.some((item) => item.id === prod.id)){
+      console.log("existe");
+      const updatedItems = [...carrito];
+      updatedItems.map((el,index)=>{
+        if(el.id==prod.id){
+          let producto ={
+            cantidad: el.cantidad + 1,
+            id: prod.id,
+            title:prod.title,
+            price:prod.price,
+          }
+          updatedItems[index] = producto;
+        }
+      })
+      setCarrito(updatedItems);
+
+    }else{
+
     let producto ={
       cantidad:1,
       id: prod.id,
       title:prod.title,
       price:prod.price,
+
     }
     setCarrito([...carrito,producto])
+  }
   }
 
   useEffect(()=>{

@@ -13,7 +13,7 @@ export default function CheckOut() {
   function suma(prod) {
     let val = 0;
     prod.map((el) => {
-      val += el.price;
+      val += (el.price*el.cantidad);
     })
     return val;
   }
@@ -43,6 +43,7 @@ export default function CheckOut() {
     }).then((result) => {
       if (result.isConfirmed) {
         const updatedItems = productos.filter((item) => item.id !== productId);
+        localStorage.setItem("carrito",JSON.stringify(updatedItems))
         setProductos(updatedItems)
         const v = suma(updatedItems)
         setVariableSuma(v);
@@ -58,7 +59,7 @@ export default function CheckOut() {
   return (
     <>
       <AppBar position="static">
-        <Toolbar style={{ backgroundColor: "brown" }}>
+        <Toolbar style={{ "backgroundColor": "brown" }}>
           <IconButton
             edge="start"
             color="inherit"
@@ -77,7 +78,7 @@ export default function CheckOut() {
           "text-align": "center"
         }}>
           <thead style={{
-            backgroundColor: "coral"
+            "backgroundColor": "coral"
           }}>
             <tr>
               <th scope="col">Codigo</th>
