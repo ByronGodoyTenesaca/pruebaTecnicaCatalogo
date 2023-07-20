@@ -1,6 +1,7 @@
 import { AppBar, IconButton, Link, Toolbar, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { Button, Card } from 'react-bootstrap';
+import Swal from 'sweetalert2'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -9,10 +10,10 @@ export default function CheckOut() {
   const [productos, setProductos] = useState([])
   const [varibaleSuma, setVariableSuma] = useState(0)
 
-  function suma (prod){
-    let val= 0;
-    prod.map((el)=>{
-      val+=el.price;
+  function suma(prod) {
+    let val = 0;
+    prod.map((el) => {
+      val += el.price;
     })
     return val;
   }
@@ -22,24 +23,42 @@ export default function CheckOut() {
     if (datos) {
       const parsedData = JSON.parse(datos);
       setProductos(parsedData)
-      const v=suma(parsedData)
+      const v = suma(parsedData)
       setVariableSuma(v);
     }
-  },[])
+  }, [])
 
 
   const handleRemoveItem = (productId) => {
-    // Implementa la lógica para eliminar el producto con el ID dado
-    const updatedItems = productos.filter((item) => item.id !== productId);
-    setProductos(updatedItems)
-    const v=suma(updatedItems)
-    setVariableSuma(v);
+
+    Swal.fire({
+      title: 'Estas seguro de eliminar',
+      text: "Quieres eliminar este producto?",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: "Eliminar",
+      cancelButtonText: "Cancelar",
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const updatedItems = productos.filter((item) => item.id !== productId);
+        setProductos(updatedItems)
+        const v = suma(updatedItems)
+        setVariableSuma(v);
+        Swal.fire(
+          'Eliminado!',
+          'El producto a sido eliminado.',
+          'success'
+        )
+      }
+    })
   };
 
   return (
     <>
       <AppBar position="static">
-        <Toolbar style={{ backgroundColor: "red" }}>
+        <Toolbar style={{ backgroundColor: "brown" }}>
           <IconButton
             edge="start"
             color="inherit"
@@ -58,7 +77,7 @@ export default function CheckOut() {
           "text-align": "center"
         }}>
           <thead style={{
-            backgroundColor:"coral"
+            backgroundColor: "coral"
           }}>
             <tr>
               <th scope="col">Codigo</th>
@@ -91,11 +110,11 @@ export default function CheckOut() {
 
 
       <div>
-        <p className="h4">Total a pagar: {varibaleSuma}</p>
+        <p className="h4" style={{"text-align":"center"}}>Total a pagar: {varibaleSuma}</p>
       </div>
 
 
-      <Link className="btn btn-outline-success" href="/">Comprar</Link>
+      <Link className="btn btn-outline-success" href="/" style={{"margin-left":"47%"}}>Comprar</Link>
     </>
   )
 }

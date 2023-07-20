@@ -32,6 +32,7 @@ export default function Catalogo() {
     const toggleDrawer = () => setOpen(!open);
     const [categorias, setCategorias] = useState({});
     const [filtro, setFiltro] = useState("all");
+    const [buscar, setBuscar] = useState("");
     const [carrito, setCarrito] = useState([])
 
     const valoresMenu = (datos) => {
@@ -45,7 +46,7 @@ export default function Catalogo() {
     return (
         <QueryClientProvider client={queryClient}>
             <AppBar position="static">
-                <Toolbar style={{ backgroundColor: "red" }}>
+                <Toolbar style={{ backgroundColor: "brown" }}>
                     <IconButton
                         edge="start"
                         color="inherit"
@@ -55,7 +56,7 @@ export default function Catalogo() {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6">
-                        Venta por catalogo
+                        Venta por catálogo
                     </Typography>
 
 
@@ -66,10 +67,8 @@ export default function Catalogo() {
                                 inputProps={{ 'aria-label': 'buscar productos' }}
                                 style={{ paddingLeft: 10 }}
                                 fullWidth
+                                onChange={(e)=>setBuscar(e.target.value)}
                             />
-                            {/* <IconButton type="submit" aria-label="search">
-                                <SearchIcon />
-                            </IconButton> */}
                         </Paper>
                     </Container>
                     <div>
@@ -84,16 +83,16 @@ export default function Catalogo() {
                 </Toolbar>
             </AppBar>
 
-            <Drawer anchor="left" open={open} onClose={toggleDrawer}>
+            <Drawer anchor="left" open={open} onClose={toggleDrawer} style={{}}>
                 <div style={{ width: 250 }}>
                     <List>
                         <ListItem button>
-                            <ListItemText primary="Inicio" onClick={() => setFiltro("all")} />
+                            <ListItemText key={0} primary="Inicio" onClick={() => setFiltro("all")} />
                         </ListItem>
                         {
                             (Object.keys(categorias).map((key) => (
                                 <ListItem button>
-                                    <ListItemText key={key} primary={key} onClick={() => setFiltro(key)} />
+                                    <ListItemText key={key} primary={key} onClick={(e) => setFiltro(key)} />
                                 </ListItem>
                             )))
                         }
@@ -103,14 +102,14 @@ export default function Catalogo() {
 
 
             {/* llamado de los items para renderizacion de la pagina con los productos*/}
-            <Items valoresMenu={valoresMenu} filtro={filtro} />
+            <Items valoresMenu={valoresMenu} filtro={filtro} buscar={buscar}/>
         </QueryClientProvider>
     );
 }
 
 
 
-function Items({ valoresMenu, filtro }) {
+function Items({ valoresMenu, filtro, buscar }) {
     const [productos, setProductos] = useState([]);
     const [categorias, setCategorias] = useState({});
 
@@ -138,6 +137,7 @@ function Items({ valoresMenu, filtro }) {
 
     useEffect(() => {
         if (data) { 
+            console.log(filtro);
             const updatedItems = data.filter((item) => item.category === filtro);
             setProductos(updatedItems)
             if(filtro === "all"){
@@ -145,6 +145,18 @@ function Items({ valoresMenu, filtro }) {
             }
         }
     }, [filtro])
+
+    useEffect(() =>{
+
+        if (data) { 
+            let expresion = new RegExp(`${buscar}.*`, "i");
+            const updatedItems = data.filter(x => expresion.test(x.title));
+            setProductos(updatedItems)
+            if(buscar == ""){
+                setProductos(data)
+            }
+        }
+    },[buscar])
 
     valoresMenu(categorias)
     return (

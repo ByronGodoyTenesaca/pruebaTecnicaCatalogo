@@ -8,8 +8,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { useState } from 'react';
-
-
+import Swal from 'sweetalert2'
 
 export default function Cards(props) {
 
@@ -33,6 +32,13 @@ export default function Cards(props) {
   };
 
   const addCarrito = (prod) =>{
+    Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: 'Producto añadido al carrito',
+      showConfirmButton: false,
+      timer: 1500
+    })
     let producto ={
       cantidad:1,
       id: prod.id,
@@ -89,13 +95,15 @@ export default function Cards(props) {
                   height: "41rem",
                   width: "80%",
                   "text-align": "center",
-                  "margin-left": "10%",}}>
+                  "margin-left": "10%",
+                  "border-radius":"2rem",
+                  "margin-top":"3rem"}}>
                   <h1>{producto.prod.title}</h1>
                   <img src={producto.prod.image} alt={producto.prod.title} style={{width: "15rem", height: "50%"}} />
-                  <h3>Descripción:</h3>
-                  <p>{producto.prod.description}</p>
-                  <h3>Precio: ${producto.prod.price}</h3>
-                  <p>Calificación: {producto.prod.rating.rate}</p>
+                  <h3><em>Descripción:</em></h3>
+                  <p><em>{producto.prod.description}</em></p>
+                  <h3><em>Precio: ${producto.prod.price}</em></h3>
+                  <p><em>Calificación: {producto.prod.rating.rate}</em></p>
                 </div>
             )
           }    
