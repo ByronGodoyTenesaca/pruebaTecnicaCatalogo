@@ -28,8 +28,8 @@ export default function Home() {
           style={{height:"100vh"}}
         />
         <Carousel.Caption>
-        <h2 style={{"margin-bottom":"1rem"}}>Tu catalogo en linea</h2>
-      <Link href="/catalogo" className={styles.boton}>Ir a catalogo</Link>
+        <h2 style={{"margin-bottom":"1rem"}}>Tu catálogo en linea</h2>
+      <Link href="/catalogo" className={styles.boton}>Ir a catálogo</Link>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item interval={2000}>

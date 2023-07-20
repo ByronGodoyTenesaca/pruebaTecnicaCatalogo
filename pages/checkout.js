@@ -97,7 +97,7 @@ export default function CheckOut() {
                   <td>{el.cantidad}</td>
                   <td>{el.price}</td>
 
-                  <td><button className="btn btn-primary" onClick={() => { handleRemoveItem(el.id) }}>eliminar</button></td>
+                  <td><button className="btn" style={{ "background-color": "brown", "color": "white" }} onClick={() => { handleRemoveItem(el.id) }}>eliminar</button></td>
                 </tr>
               ))
             }
@@ -110,11 +110,20 @@ export default function CheckOut() {
 
 
       <div>
-        <p className="h4" style={{"text-align":"center"}}>Total a pagar: {varibaleSuma}</p>
+        <p className="h4" style={{ "text-align": "center" }}>Total a pagar: {varibaleSuma}</p>
       </div>
 
 
-      <Link className="btn btn-outline-success" href="/" style={{"margin-left":"47%"}}>Comprar</Link>
+      <Link className="btn btn-outline-success" href="/" style={{ "margin-left": "47%", "background-color": "brown", "color": "white" }} onClick={() => {
+        localStorage.clear(); 
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Compra Exitosa',
+          showConfirmButton: false,
+          timer: 1500
+        })
+      }}>Comprar</Link>
     </>
   )
 }
