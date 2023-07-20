@@ -34,7 +34,7 @@ bibliotecas utilizadas
     Al presionar el botón ir al catálogo nos enlistará los productos  
     ![Alt text](image-1.png)
 
-    Como podemos observar contamos con un botón que nos indica añadir al carrito y si lo presionamos los datos serán añadidos para su posterior compra, de la misma forma al presionar el añadir carrito nos mostrara un modal donde nos indica que el producto fue añadido al carrito
+    Como podemos observar contamos con un botón que nos indica añadir al carrito y si lo presionamos los datos serán añadidos para su posterior compra, de la misma forma al presionar el añadir carrito nos mostrara un modal donde nos indica que el producto fue añadido al carrito y si seguimos añadiendo un mismo producto al carrito nos incrementa la cantidad de productos que desea el usuario  
     ![Alt text](image-2.png)
 
     También cuenta con un menú en donde podemos observar la categorías que se tiene dentro de todos los productos y se puede ir navegando entre ellas
